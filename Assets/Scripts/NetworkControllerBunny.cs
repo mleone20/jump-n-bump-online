@@ -57,12 +57,19 @@ public class NetworkControllerBunny : NetworkBunny
     /// </summary>
     public float jumpHeight = 50;
 
+    private void DisableCollisions()
+    {
+        foreach (var c in FindObjectsOfType<CharacterController>())
+            Physics.IgnoreCollision(this.CharacterController, c);
+    }
 
     /// <summary>
     /// Start di questo script
     /// </summary>
     protected void Start()
     {
+        DisableCollisions();
+
         // Se siamo il giocatore locale
         if (IsLocalPlayer)
         {
@@ -492,7 +499,7 @@ public class NetworkControllerBunny : NetworkBunny
         Input.ResultPosition = this.transform.position;
 
         // Se siamo il giocatore locale proviamo a "sparare" (solo se stiamo cadendo)
-        if (this.LatestVelocity.y < 0)
+        if (this.LatestVelocity.y < 0.2f)
         {
             // Se è il giocatore locale e non siamo il server
             if (IsLocalPlayer && !IsServer)

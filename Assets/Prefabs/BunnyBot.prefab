@@ -268,7 +268,7 @@ MonoBehaviour:
   statsUI: {fileID: 0}
   Animator: {fileID: 7239978453276083566}
   SpriteRenderer: {fileID: 7239978453276083567}
-  MinAttackDistance: 5
+  MinAttackDistance: 2
   InputController: {fileID: 2572821464036500505}
   PlayerMask:
     serializedVersion: 2
